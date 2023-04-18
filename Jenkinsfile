@@ -4,7 +4,7 @@ pipeline {
     pollSCM('* * * * *')
   }
   environment {
-    ENV = 'Main'
+    ENV = "${env.BRANCH_NAME}"
     APP = "${ENV}-jenkins-app"
   }
   stages {
