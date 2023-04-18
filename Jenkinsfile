@@ -11,7 +11,7 @@ pipeline {
       steps {
         echo "Deploying to cloudhub..."
         sh "git status"
-        sh 'mvn clean package deploy -DmuleDeploy -DaltDeploymentRepository=myinternalrepo::default::file:///C:/temp/snapshots'
+        sh "mvn clean package deploy -DmuleDeploy -Du=iTaghoury2 -Dp=vq36U!Yx4ud\$mfZ -DaltDeploymentRepository=myinternalrepo::default::file:///C:/temp/snapshots"
       }
     }
   }
