@@ -3,6 +3,9 @@ pipeline {
   triggers {
     pollSCM('* * * * *')
   }
+  environment {
+    ENV = 'Main'
+  }
   stages {
     stage('accounts') {
       steps {
@@ -12,8 +15,7 @@ pipeline {
     stage('deploy') {
       steps {
         echo "Deploying to cloudhub..."
-        sh "git status"
-        sh "mvn clean deploy -DmuleDeploy -DaltDeploymentRepository=myinternalrepo::default::file:///C:/temp/snapshots"
+        sh "mvn clean deploy -DmuleDeploy -Denv=${ENV} -Du=iTaghoury2 -Dp=Y@Rnr@gbnmhus3Z"
       }
     }
   }

@@ -33,10 +33,10 @@
 				    <cloudHubDeployment>
 				      <uri>https://anypoint.mulesoft.com</uri>
 				      <muleVersion>4.4.0</muleVersion>
-				      <username>iTaghoury2</username>
-				      <password>Y@Rnr@gbnmhus3Z</password>
+				      <username>${u}</username>
+				      <password>${p}</password>
 				      <applicationName>jenkins-test2</applicationName>
-				      <environment>Main</environment>
+				      <environment>${env}</environment>
 				      <region>us-east-2</region>
 				      <workers>1</workers>
 				      <workerType>MICRO</workerType>
