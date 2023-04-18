@@ -5,6 +5,7 @@ pipeline {
   }
   environment {
     ENV = 'Main'
+    APP = ENV + '-jenkins-app'
   }
   stages {
     stage('accounts') {
@@ -15,7 +16,7 @@ pipeline {
     stage('deploy') {
       steps {
         echo "Deploying to cloudhub..."
-        sh "mvn clean deploy -DmuleDeploy -Denv=${ENV} -Du=iTaghoury2 -Dp=Y@Rnr@gbnmhus3Z"
+        sh "mvn clean deploy -DmuleDeploy -Denv=${ENV} -Du=iTaghoury2 -Dp=Y@Rnr@gbnmhus3Z -DappName=${APP}"
       }
     }
   }
