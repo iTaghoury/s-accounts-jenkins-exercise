@@ -35,7 +35,7 @@
 				      <muleVersion>4.4.0</muleVersion>
 				      <username>iTaghoury2</username>
 				      <password>vq36U!Yx4ud$mfZ</password>
-				      <applicationName>jenkins-test</applicationName>
+				      <applicationName>jenkins-test2</applicationName>
 				      <environment>Main</environment>
 				      <region>us-east-2</region>
 				      <workers>1</workers>
