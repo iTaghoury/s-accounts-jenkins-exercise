@@ -4,8 +4,8 @@ pipeline {
     pollSCM('* * * * *')
   }
   environment {
-    ENV = "Main"
-    APP = "${ENV}-jenkins-app"
+    DEPLOYMENT_ENV = ""
+    APP = "${DEPLOYMENT_ENV}-jenkins-app"
   }
   stages {
     stage('accounts') {
@@ -14,9 +14,21 @@ pipeline {
       }
     }
     stage('deploy') {
+      environment {
+        AP_CRED = credentials('ANYPOINT_PLATFORM_CREDENTIALS')
+      }
       steps {
         echo "Deploying to cloudhub..."
-        sh "mvn clean deploy -DmuleDeploy -Denv=${ENV} -Du=iTaghoury2 -Dp=Y@Rnr@gbnmhus3Z -DappName=${APP}"
+        echo "Building Branch: ${BRANCH_NAME}"
+        script {
+          if (BRANCH_NAME == 'main') {
+            DEPLOYMENT_ENV = "Main"
+          } else if (BRANCH_NAME == 'test') {
+            DEPLOYMENT_ENV = "Test"
+          }
+          APP = "${DEPLOYMENT_ENV}-jenkins-app"
+        }
+        sh "mvn clean deploy -DmuleDeploy -Denv=${DEPLOYMENT_ENV} -Du=${AP_CRED_USR} -Dp=${AP_CRED_PSW} -DappName=${APP}"
       }
     }
   }
