@@ -10,6 +10,7 @@ pipeline {
     stage('deploy') {
       steps {
         echo "Deploying to cloudhub..."
+        sh "git status"
         sh 'mvn clean package deploy -DmuleDeploy -DaltDeploymentRepository=myinternalrepo::default::file:///C:/temp/snapshots'
       }
     }
