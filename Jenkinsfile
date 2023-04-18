@@ -5,7 +5,7 @@ pipeline {
   }
   environment {
     ENV = 'Main'
-    APP = ENV + '-jenkins-app'
+    APP = "${ENV}-jenkins-app"
   }
   stages {
     stage('accounts') {
