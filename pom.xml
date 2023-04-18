@@ -35,7 +35,7 @@
 				      <muleVersion>4.4.0</muleVersion>
 				      <username>${u}</username>
 				      <password>${p}</password>
-				      <applicationName>jenkins-test2</applicationName>
+				      <applicationName>${appName}</applicationName>
 				      <environment>${env}</environment>
 				      <region>us-east-2</region>
 				      <workers>1</workers>
