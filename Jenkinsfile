@@ -10,6 +10,7 @@ pipeline {
     stage('deploy') {
       steps {
         echo "Deploying to cloudhub..."
+        sh 'mvn clean package deploy -DmuleDeploy'
       }
     }
   }
