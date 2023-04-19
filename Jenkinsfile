@@ -18,7 +18,7 @@ pipeline {
       steps {
         echo "Building..."
         echo "Building Branch: ${BRANCH_NAME}"
-        sh "mvn -X clean install"
+        sh "mvn -X -DskipTests clean install"
       }
     }
     stage('deploy') {
@@ -35,7 +35,7 @@ pipeline {
           WORKER_TYPE = config.workerType
           APP = "${DEPLOYMENT_ENV}-jenkins-app"
         }
-        sh "mvn clean deploy -DmuleDeploy -Denv=${DEPLOYMENT_ENV} -Du=${AP_CRED_USR} -Dp=${AP_CRED_PSW} -DappName=${APP} -Dworkers=${WORKERS} -DworkerType=${WORKER_TYPE}"
+        sh "mvn clean deploy -DskipTests -DmuleDeploy -Denv=${DEPLOYMENT_ENV} -Du=${AP_CRED_USR} -Dp=${AP_CRED_PSW} -DappName=${APP} -Dworkers=${WORKERS} -DworkerType=${WORKER_TYPE}"
       }
     }
   }
