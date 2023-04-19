@@ -1,3 +1,5 @@
 {
-  "envName": "Main"
+  "envName": "Main",
+  "workers": "1",
+  "workerType": "MICRO"
 }
