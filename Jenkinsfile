@@ -10,6 +10,13 @@ pipeline {
     APP = "${DEPLOYMENT_ENV}-jenkins-app"
   }
   stages {
+    stage('Build') {
+      steps {
+        echo "Building..."
+        echo "Building Branch: ${BRANCH_NAME}"
+        sh "mvn clean install"
+      }
+    }
     stage('deploy') {
       environment {
         AP_CRED = credentials('ANYPOINT_PLATFORM_CREDENTIALS')
