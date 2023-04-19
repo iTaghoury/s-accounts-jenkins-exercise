@@ -16,7 +16,7 @@
                 <http:headers>#[vars.outboundHeaders default {}]</http:headers>
             </http:error-response>
         </http:listener>
-        <apikit:router config-ref="accounts-sapi-config" />
+        <apikit:router config-ref="accounts-sapi-config" doc:id="8b724fd4-0449-4ac5-920a-64583e9379d9"/>
         <error-handler>
             <on-error-propagate type="APIKIT:BAD_REQUEST">
                 <ee:transform>
@@ -108,7 +108,7 @@ output application/json
                 <http:headers>#[vars.outboundHeaders default {}]</http:headers>
             </http:error-response>
         </http:listener>
-        <apikit:console config-ref="accounts-sapi-config" />
+        <apikit:console config-ref="accounts-sapi-config" doc:id="51c44686-0f3d-44fd-b083-e67f094f959f"/>
         <error-handler>
             <on-error-propagate type="APIKIT:NOT_FOUND">
                 <ee:transform>
@@ -126,7 +126,7 @@ output application/json
         </error-handler>
     </flow>
     <flow name="get:\accounts:accounts-sapi-config">
-        <ee:transform>
+        <ee:transform doc:id="de96cdae-5e8f-402f-bb1e-1b40aa32a189">
             <ee:message>
                 <ee:set-payload><![CDATA[%dw 2.0
 output application/json

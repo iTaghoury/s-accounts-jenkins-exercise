@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="accounts-sapi-test-suite.xml" />
+	<munit:test name="accounts-sapi-test-suite-accounts-sapi-mainTest" doc:id="7c83799a-911d-4689-93a2-5dd5b0ee1600" description="Test" expectedErrorType="APIKIT:BAD_REQUEST">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when" doc:id="f2c9a61f-8a09-45f1-b4b5-66cee99ae7c2" processor="apikit:router">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="accounts-sapi-config" attributeName="config-ref" />
+					<munit-tools:with-attribute whereValue="8b724fd4-0449-4ac5-920a-64583e9379d9" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:BAD_REQUEST" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to accounts-sapi-main" doc:id="4f917cff-28f4-42ac-9523-b4bd59f1df7d" name="accounts-sapi-main"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-equals doc:name="httpStatus" doc:id="2ee5e6f9-269e-4ae0-ab66-83968977d80d" actual="#[vars.httpStatus]" expected="#[400]"/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="accounts-sapi-test-suite-accounts-sapi-mainTest1" doc:id="8d68717b-d7b2-4a8f-9168-5a7d7854087c" description="Test" expectedErrorType="APIKIT:NOT_FOUND">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when" doc:id="0fb78b60-dbed-4b55-b827-0eea6524dd63" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="accounts-sapi-config" attributeName="config-ref" />
+					<munit-tools:with-attribute whereValue="8b724fd4-0449-4ac5-920a-64583e9379d9" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:NOT_FOUND" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to accounts-sapi-main" doc:id="6a87cb5a-4d11-4764-bef0-a70dac8ea728" name="accounts-sapi-main"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-equals doc:name="httpStatus" doc:id="73bcaf5f-dce0-4b52-8cb8-ab98f7028d0d" actual="#[vars.httpStatus]" expected="#[404]" />
+		</munit:validation>
+	</munit:test>
+	<munit:test name="accounts-sapi-test-suite-accounts-sapi-mainTest2" doc:id="7c0c9af8-12bf-4971-9f89-77aca036441f" description="Test" expectedErrorType="APIKIT:METHOD_NOT_ALLOWED">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when" doc:id="396fe3c7-7fd5-4293-919b-1d9f810a7c07" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="accounts-sapi-config" attributeName="config-ref" />
+					<munit-tools:with-attribute whereValue="8b724fd4-0449-4ac5-920a-64583e9379d9" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:METHOD_NOT_ALLOWED" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to accounts-sapi-main" doc:id="c12d763e-8d32-42ff-8f50-a64f6a5595c7" name="accounts-sapi-main"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-equals doc:name="httpStatus" doc:id="86cb3e0f-f149-448e-9232-3d885577ee0f" actual="#[vars.httpStatus]" expected="#[405]" />
+		</munit:validation>
+	</munit:test>
+	<munit:test name="accounts-sapi-test-suite-accounts-sapi-mainTest3" doc:id="d7a6ec0b-ec72-4a9c-b769-4beb17335e38" description="Test" expectedErrorType="APIKIT:NOT_ACCEPTABLE">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when" doc:id="5874d991-0edd-49d2-8d5b-be7ed9218cc7" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="accounts-sapi-config" attributeName="config-ref" />
+					<munit-tools:with-attribute whereValue="8b724fd4-0449-4ac5-920a-64583e9379d9" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:NOT_ACCEPTABLE" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to accounts-sapi-main" doc:id="6f08f6b0-3248-4fbe-885e-93bd0cb73ef3" name="accounts-sapi-main"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-equals doc:name="httpStatus" doc:id="22b317c0-9cef-4b57-b577-9b5c3dbffea0" actual="#[vars.httpStatus]" expected="#[406]" />
+		</munit:validation>
+	</munit:test>
+	<munit:test name="accounts-sapi-test-suite-accounts-sapi-mainTest4" doc:id="82b8a97d-4890-4c1c-95d1-53ce95866b52" description="Test" expectedErrorType="APIKIT:UNSUPPORTED_MEDIA_TYPE">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when" doc:id="17d0a4f6-b771-413f-b7d2-ffafcde48b99" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="accounts-sapi-config" attributeName="config-ref" />
+					<munit-tools:with-attribute whereValue="8b724fd4-0449-4ac5-920a-64583e9379d9" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:UNSUPPORTED_MEDIA_TYPE" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to accounts-sapi-main" doc:id="b5a327c1-a946-4f69-80aa-ec3179448b6e" name="accounts-sapi-main"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-equals doc:name="httpStatus" doc:id="2eedb788-aa73-482d-a85c-f05af8eb7602" actual="#[vars.httpStatus]" expected="#[415]" />
+		</munit:validation>
+	</munit:test>
+	<munit:test name="accounts-sapi-test-suite-accounts-sapi-mainTest5" doc:id="ddd4ce97-c80f-46ef-8abb-4b8c51275302" description="Test" expectedErrorType="APIKIT:NOT_IMPLEMENTED">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when" doc:id="2fed160e-fbf9-47b4-8acc-098fbf2b5101" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="accounts-sapi-config" attributeName="config-ref" />
+					<munit-tools:with-attribute whereValue="8b724fd4-0449-4ac5-920a-64583e9379d9" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:NOT_IMPLEMENTED" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to accounts-sapi-main" doc:id="be6dae70-955f-4d5c-94ba-70dfbe6335a5" name="accounts-sapi-main"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-equals doc:name="httpStatus" doc:id="c6a94f15-37af-4fba-b1ba-894fa34c70eb" actual="#[vars.httpStatus]" expected="#[501]" />
+		</munit:validation>
+	</munit:test>
+	<munit:test name="accounts-sapi-test-suite-accounts-sapi-consoleTest" doc:id="2499fd65-21fd-49ad-8807-3bb7f8bc664d" description="Test" expectedErrorType="APIKIT:NOT_FOUND">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when" doc:id="33302904-c6f7-4573-b618-c06c1abe226a" processor="apikit:console">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="accounts-sapi-config" attributeName="config-ref" />
+					<munit-tools:with-attribute whereValue="51c44686-0f3d-44fd-b083-e67f094f959f" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:NOT_FOUND" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to accounts-sapi-console" doc:id="dcca37d3-250a-46ef-bb2d-233533faaa0c" name="accounts-sapi-console"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-equals doc:name="httpStatus" doc:id="5c186195-093a-4e15-9571-8f0b401050f8" actual="#[vars.httpStatus]" expected="#[404]" />
+		</munit:validation>
+	</munit:test>
+
+
+</mule>
