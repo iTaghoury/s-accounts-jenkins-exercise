@@ -38,8 +38,8 @@
 						<applicationName>${appName}</applicationName>
 						<environment>${env}</environment>
 						<region>us-east-2</region>
-						<workers>1</workers>
-						<workerType>MICRO</workerType>
+						<workers>${workers}</workers>
+						<workerType>${workerType}</workerType>
 						<properties>
 							<env>dev</env>
 						</properties>

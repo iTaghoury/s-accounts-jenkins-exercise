@@ -5,6 +5,8 @@ pipeline {
   }
   environment {
     DEPLOYMENT_ENV = ""
+    WORKERS = ""
+    WORKER_TYPE = ""
     APP = "${DEPLOYMENT_ENV}-jenkins-app"
   }
   stages {
@@ -18,9 +20,11 @@ pipeline {
         script {
           def config = readJSON file: "env/${BRANCH_NAME}/config.json"
           DEPLOYMENT_ENV = config.envName
+          WORKERS = config.workers
+          WORKER_TYPE = config.workerType
           APP = "${DEPLOYMENT_ENV}-jenkins-app"
         }
-        sh "mvn clean deploy -DmuleDeploy -Denv=${DEPLOYMENT_ENV} -Du=${AP_CRED_USR} -Dp=${AP_CRED_PSW} -DappName=${APP}"
+        sh "mvn clean deploy -DmuleDeploy -Denv=${DEPLOYMENT_ENV} -Du=${AP_CRED_USR} -Dp=${AP_CRED_PSW} -DappName=${APP} -Dworkers=${WORKERS} -DworkerType=${WORKER_TYPE}"
       }
     }
   }
