@@ -3,6 +3,10 @@ pipeline {
   triggers {
     pollSCM('* * * * *')
   }
+  tools { 
+    maven 'Maven 3.6.3' 
+    jdk 'jdk11' 
+  }
   environment {
     DEPLOYMENT_ENV = ""
     WORKERS = ""
