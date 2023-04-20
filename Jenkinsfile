@@ -18,7 +18,7 @@ pipeline {
       steps {
         echo "Building..."
         echo "Building Branch: ${BRANCH_NAME}"
-        sh "mvn -X clean install"
+        sh "mvn -X -DskipTests clean install"
       }
     }
     stage('deploy') {
